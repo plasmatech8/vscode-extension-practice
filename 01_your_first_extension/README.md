@@ -40,3 +40,17 @@ which will autaomatically remove the command on deactivate.
 
 [package.json](your-first-extension/package-lock.json) also contains information about the
 extension, including commands registered for VS Code.
+
+## 03. Anatomy
+
+> The `Hello World` extension does 3 things:
+> * Registers the `onCommand` Activation Event: `onCommand:helloworld.helloWorld`, so the extension becomes activated when user runs the `Hello World` command.
+> * Uses the `contributes.commands` Contribution Point to make the command `Hello World` available in the Command Palette, and bind it to a command ID `helloworld.helloWorld`.
+> * Uses the `commands.registerCommand` VS Code API to bind a function to the registered command ID `helloworld.helloWorld`.
+>
+> Understanding these three concepts is crucial to writing extensions in VS Code:
+> * Activation Events: events upon which your extension becomes active.
+> * Contribution Points: static declarations that you make in the package.json Extension Manifest to extend VS Code.
+> * VS Code API: a set of JavaScript APIs that you can invoke in your extension code.
+
+From: https://code.visualstudio.com/api/get-started/extension-anatomy
