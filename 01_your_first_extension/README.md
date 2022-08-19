@@ -28,3 +28,15 @@ Then in your editor you can press `F5` and select the option for debugging a VS 
 Make sure you have the `your-first-extension` opened as the root folder in VS Code.
 
 You should be able to run open the command pallet and run the command `Hello World`.
+
+## 02. Development
+
+[extension.ts](your-first-extension/src/extension.ts) contains the extension code.
+
+It contains an activate and deactivate function.
+
+You can create commands in the activate function, and add the `disposable` to the subscriptions,
+which will autaomatically remove the command on deactivate.
+
+[package.json](your-first-extension/package-lock.json) also contains information about the
+extension, including commands registered for VS Code.
