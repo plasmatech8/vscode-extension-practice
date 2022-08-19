@@ -24,6 +24,22 @@
       {
         "command": "your-first-extension.selectOption",
         "title": "Select Option"
+      },
+      {
+        "command": "your-first-extension.showVariable",
+        "title": "Show Variable"
+      }
+    ],
+    "configuration": [
+      {
+        "title": "Your First Extension",
+        "properties": {
+          "yourFirstExtension.someVariable": {
+            "type": "string",
+            "default": "foo",
+            "description": "A string configuration variable in settings for the extension."
+          }
+        }
       }
     ]
   },

@@ -75,3 +75,35 @@ Alternatively, we can use `"activationEvents": ["*"]` in `package.json`
 to activate when VS Code starts up.
 
 See [Activation Events](https://code.visualstudio.com/api/references/activation-events#onStartupFinished).
+
+## 06. Configuration variables
+
+Add configuration properties to the contributes clause in the `package.json` to add variables:
+```json
+{
+    // ...
+    "contributes": {
+        // ...
+        "configuration": [
+            {
+            "title": "Your First Extension",
+            "properties": {
+                "yourFirstExtension.someVariable": {
+                "type": "string",
+                "default": "foo",
+                "description": "A string configuration variable in settings for the extension."
+                }
+            }
+            }
+        ]
+    }
+    // ...
+}
+```
+
+Access the variable in the extension using `getConfiguration`:
+```js
+const x = vscode.workspace.getConfiguration("yourFirstExtension");
+const y = x.get("someVariable");
+vscode.window.showInformationMessage("Variable is: " + y);
+```

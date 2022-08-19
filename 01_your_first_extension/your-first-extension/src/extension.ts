@@ -70,12 +70,23 @@ export function activate(context: vscode.ExtensionContext) {
     }
   );
 
+  // Show a message containing a settings variable
+  const showVariableCmd = vscode.commands.registerCommand(
+    "your-first-extension.showVariable",
+    () => {
+      const x = vscode.workspace.getConfiguration("yourFirstExtension");
+      const y = x.get("someVariable");
+      vscode.window.showInformationMessage("Variable is: " + y);
+    }
+  );
+
   // Add subscriptions
   context.subscriptions.push(
     helloWorldCmd,
     selectOptionCmd,
     changeTabs,
-    openTextDoc
+    openTextDoc,
+    showVariableCmd
   );
 }
 
