@@ -40,7 +40,15 @@ export function activate(context: vscode.ExtensionContext) {
     }
   );
 
-  context.subscriptions.push(helloWorldCmd, selectOptionCmd);
+  const changeTabs = vscode.window.tabGroups.onDidChangeTabs(
+    (tabChangeEvent) => {
+      // You can see tabs that are opened, closed, or changed
+      console.log("tab changed", tabChangeEvent.opened);
+    }
+  );
+
+  // Add subscriptions
+  context.subscriptions.push(helloWorldCmd, selectOptionCmd, changeTabs);
 }
 
 // this method is called when your extension is deactivated
