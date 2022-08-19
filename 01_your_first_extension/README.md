@@ -73,3 +73,5 @@ Currently, we need to run a command to activate the extension.
 
 Alternatively, we can use `"activationEvents": ["*"]` in `package.json`
 to activate when VS Code starts up.
+
+See [Activation Events](https://code.visualstudio.com/api/references/activation-events#onStartupFinished).
