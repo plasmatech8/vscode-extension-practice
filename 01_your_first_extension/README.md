@@ -54,3 +54,15 @@ extension, including commands registered for VS Code.
 > * VS Code API: a set of JavaScript APIs that you can invoke in your extension code.
 
 From: https://code.visualstudio.com/api/get-started/extension-anatomy
+
+## 04. Examples & Docs
+
+[VS Code API](https://code.visualstudio.com/api/references/vscode-api)
+contains information about all accessible APIs.
+
+[vscode-extension-samples](https://github.com/microsoft/vscode-extension-samples)
+contains examples of usage.
+
+(e.g. we can detect when a new tab is opened using the tabs API using
+[tabs-api-sample](https://github.com/microsoft/vscode-extension-samples/blob/main/tabs-api-sample/src/extension.ts)
+and [TabGroups](https://code.visualstudio.com/api/references/vscode-api#TabGroups))
