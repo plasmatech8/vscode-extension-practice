@@ -24,6 +24,7 @@ export function activate(context: vscode.ExtensionContext) {
     }
   );
 
+  // An option selection dialog
   const selectOptionCmd = vscode.commands.registerCommand(
     "your-first-extension.selectOption",
     () => {
@@ -40,15 +41,42 @@ export function activate(context: vscode.ExtensionContext) {
     }
   );
 
+  // Prints a message when tabs change
   const changeTabs = vscode.window.tabGroups.onDidChangeTabs(
     (tabChangeEvent) => {
-      // You can see tabs that are opened, closed, or changed
-      console.log("tab changed", tabChangeEvent.opened);
+      // You can see an array of tabs that are opened, closed, or changed
+      const tabData = tabChangeEvent.opened.map((tab) => ({ ...tab }));
+      console.log("tab changed", tabData);
+    }
+  );
+
+  // When a text document is opened (also activates on renaming),
+  // if the document is hello.py, rename to world.py
+  const openTextDoc = vscode.workspace.onDidOpenTextDocument(
+    async (textDocument) => {
+      const docData = { ...textDocument };
+      console.log("Opened document", docData);
+      if (docData.uri.path.endsWith("/hello.py")) {
+        console.log(docData.uri.path);
+        const newUri = docData.uri.with({
+          path: docData.uri.path.replace("/hello.py", "/world.py"),
+        });
+        try {
+          await vscode.workspace.fs.rename(docData.uri, newUri);
+        } catch (e: any) {
+          vscode.window.showErrorMessage("Failed to rename file");
+        }
+      }
     }
   );
 
   // Add subscriptions
-  context.subscriptions.push(helloWorldCmd, selectOptionCmd, changeTabs);
+  context.subscriptions.push(
+    helloWorldCmd,
+    selectOptionCmd,
+    changeTabs,
+    openTextDoc
+  );
 }
 
 // this method is called when your extension is deactivated
