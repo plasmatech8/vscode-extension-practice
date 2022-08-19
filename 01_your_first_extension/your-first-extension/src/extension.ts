@@ -14,7 +14,7 @@ export function activate(context: vscode.ExtensionContext) {
   // The command has been defined in the package.json file
   // Now provide the implementation of the command with registerCommand
   // The commandId parameter must match the command field in package.json
-  let disposable = vscode.commands.registerCommand(
+  let helloWorldCmd = vscode.commands.registerCommand(
     "your-first-extension.helloWorld",
     () => {
       // Display a message box to the user
@@ -24,7 +24,7 @@ export function activate(context: vscode.ExtensionContext) {
     }
   );
 
-  const selectOptionDisposable = vscode.commands.registerCommand(
+  const selectOptionCmd = vscode.commands.registerCommand(
     "your-first-extension.selectOption",
     () => {
       vscode.window
@@ -40,8 +40,7 @@ export function activate(context: vscode.ExtensionContext) {
     }
   );
 
-  context.subscriptions.push(disposable);
-  context.subscriptions.push(selectOptionDisposable);
+  context.subscriptions.push(helloWorldCmd, selectOptionCmd);
 }
 
 // this method is called when your extension is deactivated
