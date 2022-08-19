@@ -66,3 +66,10 @@ contains examples of usage.
 (e.g. we can detect when a new tab is opened using the tabs API using
 [tabs-api-sample](https://github.com/microsoft/vscode-extension-samples/blob/main/tabs-api-sample/src/extension.ts)
 and [TabGroups](https://code.visualstudio.com/api/references/vscode-api#TabGroups))
+
+## 05. Activation events
+
+Currently, we need to run a command to activate the extension.
+
+Alternatively, we can use `"activationEvents": ["*"]` in `package.json`
+to activate when VS Code starts up.
